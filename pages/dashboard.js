@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import securePage from "../hocs/securePage";
-import { Flex, Box, Text } from "rebass";
+import { Flex, Box, Text, Button } from "rebass";
 import Dropzone from "react-dropzone";
 import styled from "styled-components";
 
@@ -43,6 +43,9 @@ async function uploadFiles(files) {
 const Dashboard = ({ loggedUser, ...props }) => {
 	return (
 		<Fragment>
+			<Flex justify="flex-end" mb={4}>
+				<Button>New site from git</Button>
+			</Flex>
 			<Flex justify="center">
 				<Box w={1 / 2}>
 					<StyledDropzone onDrop={onDrop}>
