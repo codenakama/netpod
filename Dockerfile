@@ -12,4 +12,6 @@ RUN npm run build
 # Bundle app source
 COPY . /usr/src/app
 
+
+EXPOSE 80:3000
 CMD [ "npm", "start" ]
