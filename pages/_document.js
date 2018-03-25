@@ -8,11 +8,15 @@ import { ServerStyleSheet, injectGlobal } from "styled-components";
 import { Provider } from "rebass";
 
 injectGlobal`
-  * { box-sizing: border-box; }
-  body { margin: 0; }
+	* {
+	  box-sizing: border-box; 
+	}
+  	body { 
+	  margin: 0;
+	  font-family: 'Lato', sans-serif;
+	}
 `;
 
-console.log(Provider);
 class MyDocument extends Document {
 	static getInitialProps({ renderPage }) {
 		const sheet = new ServerStyleSheet();
@@ -30,11 +34,11 @@ class MyDocument extends Document {
 					<title>Net Pod - Dashboard</title>
 					<meta httpEquiv="x-ua-compatible" content="ie=edge" />
 					<meta charSet="utf-8" />
-					{/* <link
-            href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
-            async
-            rel="stylesheet"
-          /> */}
+					<link
+						href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+						async
+						rel="stylesheet"
+					/>
 					<meta name="viewport" content="width=device-width" />
 
 					{this.props.styleTags}

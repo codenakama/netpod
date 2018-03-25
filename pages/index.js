@@ -1,28 +1,44 @@
-import React from "react";
-import Layout from "../components/Layout";
+import React, { Fragment, Component } from "react";
+import PropTypes from "prop-types";
 import { Heading, Flex, Box, Lead, Subhead, Text } from "rebass";
-import Dropzone from "react-dropzone";
+import defaultPage from "../hocs/defaultPage";
+import Router from "next/router";
 
-function onDrop(acceptedFiles, rejectedFiles) {
-	console.log(acceptedFiles);
+class Index extends Component {
+	componentWillReceiveProps(nextProps) {
+		const { isAuthenticated } = nextProps;
+		console.log(isAuthenticated);
+		if (isAuthenticated) {
+			Router.push("dashboard");
+		}
+	}
+
+	render() {
+		const { isAuthenticated } = this.props;
+		return (
+			<Fragment>
+				{!isAuthenticated && (
+					<div>
+						<Flex mb={6}>
+							<Box w={3 / 4}>
+								<Heading mb={2}>
+									Deploy your dotnet core project, pretty fast!
+								</Heading>
+								<Lead>
+									Quickly test a proof of concept, an idea, the next big thing
+									in just a couple of minutes.
+								</Lead>
+							</Box>
+						</Flex>
+					</div>
+				)}
+			</Fragment>
+		);
+	}
 }
 
-export default () => (
-	<Layout>
-		<Flex mb={6}>
-			<Box w={3 / 4}>
-				<Heading mb={2}>Build, deploy, and manage modern web projects</Heading>
-				<Lead>
-					Get an all-in-one workflow that combines global deployment, continuous
-					integration, and HTTPS. And that’s just the beginning.
-				</Lead>
-			</Box>
-		</Flex>
-		<Flex mb={2} justify="center">
-			<Text>Drop files to deploy your app now!</Text>
-		</Flex>
-		<Flex justify="center">
-			<Dropzone onDrop={onDrop} />
-		</Flex>
-	</Layout>
-);
+Index.propTypes = {
+	isAuthenticated: PropTypes.bool.isRequired
+};
+
+export default defaultPage(Index);
