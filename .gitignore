@@ -59,6 +59,9 @@ typings/
 
 # next.js build output
 .next
+[Oo]ut/
+[Oo]cto/
+
 \.DS_Store
 
 \.vscode/
