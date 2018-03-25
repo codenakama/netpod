@@ -5,11 +5,10 @@ import defaultPage from "../hocs/defaultPage";
 import Router from "next/router";
 
 class Index extends Component {
-	componentWillReceiveProps(nextProps) {
-		const { isAuthenticated } = nextProps;
-		console.log(isAuthenticated);
+	componentDidMount() {
+		const { isAuthenticated } = this.props;
 		if (isAuthenticated) {
-			Router.push("dashboard");
+			Router.push("/dashboard");
 		}
 	}
 

@@ -3,6 +3,16 @@ import PropTypes from "prop-types";
 import securePage from "../hocs/securePage";
 import { Flex, Box, Text } from "rebass";
 import Dropzone from "react-dropzone";
+import styled from "styled-components";
+
+const StyledDropzone = styled(Dropzone)`
+	width: 100%;
+	border: 2px dashed #e9ebeb;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
 
 function onDrop(acceptedFiles, rejectedFiles) {
 	if (acceptedFiles) {
@@ -33,12 +43,11 @@ async function uploadFiles(files) {
 const Dashboard = ({ loggedUser, ...props }) => {
 	return (
 		<Fragment>
-			<Flex mb={2} justify="center">
-				<Text>Drop files to deploy your app now!</Text>
-			</Flex>
 			<Flex justify="center">
 				<Box w={1 / 2}>
-					<Dropzone onDrop={onDrop} />
+					<StyledDropzone onDrop={onDrop}>
+						<Text color="#cdcdcd">Drop files to deploy your app now!</Text>
+					</StyledDropzone>
 				</Box>
 			</Flex>
 		</Fragment>
